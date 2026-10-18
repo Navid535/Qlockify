@@ -1,0 +1,14 @@
+{% extends 'base/app.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Profile | Quera Clock{% endblock %}
+{% block content %}
+    <section class="panel auth-panel">
+      <h1>Profile</h1>
+      <form method="post" class="stack-form" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form|crispy }}
+        <button class="button" type="submit">Save</button>
+      </form>
+    </section>
+{% endblock %}
+

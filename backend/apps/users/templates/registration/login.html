@@ -1,0 +1,13 @@
+{% extends 'base/app.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Login | Quera Clock{% endblock %}
+{% block content %}
+    <section class="panel auth-panel">
+      <h1>Login</h1>
+      <form method="post" class="stack-form">
+          {% csrf_token %}
+          {{ form|crispy }}
+        <button class="button" type="submit">Login</button>
+      </form>
+    </section>
+{% endblock %}

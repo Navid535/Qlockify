@@ -1,0 +1,18 @@
+{% extends 'base/app.html' %}
+{% load crispy_forms_tags %}
+{% block title %}About | Quera Clock{% endblock %}
+{% block content %}
+    <section class="page-heading">
+      <p class="eyebrow">About</p>
+      <h1>A simplified Clockify-like project for learning Django.</h1>
+      <p>Users work inside workspaces, organize work with clients, projects and tags, and record time entries.</p>
+    </section>
+    <section class="panel">
+      <h2>Contact us note</h2>
+      <form method="post" class="stack-form">
+          {% csrf_token %}
+          {{ form|crispy }}
+        <button class="button" type="submit">Save note</button>
+      </form>
+    </section>
+{% endblock %}

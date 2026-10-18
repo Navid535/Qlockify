@@ -1,0 +1,49 @@
+{% extends 'base/app.html' %}
+{% block title %}Dashboard | Quera Clock{% endblock %}
+{% block content %}
+    <section class="page-heading">
+      <p class="eyebrow">Dashboard</p>
+      <h1>Foundation Preview</h1>
+      <p>This read-only dashboard shows the foundation data before the API phase.</p>
+    </section>
+
+    <section class="grid grid-2">
+      <article class="panel stat-card">
+        <span>Visible workspaces</span>
+        <strong>{{ workspaces.count }}</strong>
+      </article>
+      <article class="panel stat-card">
+        <span>Running timers</span>
+        <strong>{{ running_timer_count }}</strong>
+      </article>
+    </section>
+
+    <section class="panel dashboard-section">
+      <h2>Visible workspaces</h2>
+      <div class="dashboard-list">
+        {% for workspace in workspaces %}
+          <article class="dashboard-item">
+            <strong>{{ workspace.name }}</strong>
+            <span class="dashboard-item__meta">...</span>
+          </article>
+          {% empty %}
+            <p class="empty-state">No workspaces yet.</p>
+
+          {% endfor %}
+      </div>
+    </section>
+
+    <section class="panel dashboard-section">
+      <h2>Recent entries</h2>
+      <div class="dashboard-list">
+        {% for re in recent_entries %}
+          <article class="dashboard-item">
+            <strong>{{ re.description|default_if_none:"No description" }}</strong>
+            <span class="dashboard-item__meta">{{ re.project|default_if_none:"No project" }} {{ re.workspace }}</span>
+          </article>
+        {% empty %}
+          <p class="empty-state">No time entries yet.</p>
+        {% endfor %}
+      </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base/app.html' %}
+{% block title %}Quera Clock{% endblock %}
+{% block content %}
+    <section class="hero">
+      <p class="eyebrow">Quera Clock</p>
+      <h1>Track time with a workspace-first Django foundation.</h1>
+      <p>This phase stores the core domain data that the API phase will use.</p>
+      <p>
+        <span>{{ workspace_count }} workspaces</span>
+        <span>{{ project_count }} projects</span>
+      </p>
+      <a class="button" href="{% url 'workspaces:status' %}">View project status</a>
+    </section>
+{% endblock %}

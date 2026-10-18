@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "AppSans";
+  src: url("/fonts/Vazirmatn[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+
+  /* Arabic + Persian Unicode blocks */
+  unicode-range:
+    U+0600-06FF,
+    U+0750-077F,
+    U+08A0-08FF,
+    U+FB50-FDFF,
+    U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: "AppSans";
+  src: local("Inter");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+
+  /* Latin */
+  unicode-range:
+    U+0000-00FF,
+    U+0100-024F,
+    U+1E00-1EFF;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-quera-blue: #2563eb;
+  --font-sans: "AppSans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  font-family: "AppSans", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+@layer utilities {
+  @media (min-width: 1024px) {
+    .text-xs {
+      font-size: 0.875rem !important; /* Bumps 12px to 14px */
+      line-height: 1.25rem !important;
+    }
+    .text-sm {
+      font-size: 1rem !important; /* Bumps 14px to 16px */
+      line-height: 1.5rem !important;
+    }
+    .text-base {
+      font-size: 1.125rem !important; /* Bumps 16px to 18px */
+      line-height: 1.75rem !important;
+    }
+    .text-lg {
+      font-size: 1.25rem !important; /* Bumps 18px to 20px */
+      line-height: 1.75rem !important;
+    }
+  }
+
+  @keyframes landing-rise {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes landing-float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+
+  @keyframes landing-grid {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 36px, 0);
+    }
+  }
+
+  @keyframes landing-aurora {
+    0%,
+    100% {
+      opacity: 0.8;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: translate3d(0, -1%, 0) scale(1.04);
+    }
+  }
+
+  @keyframes landing-shimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-landing-rise {
+    animation: landing-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-landing-float {
+    animation: landing-float 6s ease-in-out infinite;
+  }
+
+  .landing-hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at top, rgba(0, 0, 0, 0.95), transparent 78%);
+    animation: landing-grid 16s linear infinite;
+  }
+
+  .dark .landing-hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.09) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.09) 1px, transparent 1px);
+  }
+
+  .landing-aurora {
+    background:
+      radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.18), transparent 34%),
+      radial-gradient(circle at 85% 18%, rgba(245, 158, 11, 0.18), transparent 28%),
+      radial-gradient(circle at 58% 34%, rgba(20, 184, 166, 0.12), transparent 30%);
+    animation: landing-aurora 14s ease-in-out infinite;
+  }
+
+  .landing-shimmer {
+    background-size: 200% 200%;
+    animation: landing-shimmer 7s linear infinite;
+  }
+}
+
+
+/* Global Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1; /* Tailwind slate-300 */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8; /* Tailwind slate-400 */
+}
+
+/* Dark mode support */
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #334155; /* Tailwind slate-700 */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #475569; /* Tailwind slate-600 */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.dark * {
+  scrollbar-color: #334155 transparent;
+}

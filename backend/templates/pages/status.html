@@ -1,0 +1,13 @@
+{% extends 'base/app.html' %}
+{% block title %}Status | Quera Clock{% endblock %}
+
+{% block content %}
+    <section class="grid grid-3">
+      <article class="panel"><span>Workspaces</span> <strong>{{ workspace_count }}</strong></article>
+      <article class="panel"><span>Clients</span> <strong>{{ client_count }}</strong></article>
+      <article class="panel"><span>Projects</span> <strong>{{ project_count }}</strong></article>
+      <article class="panel"><span>Tags</span> <strong>{{ tag_count }}</strong></article>
+      <article class="panel"><span>Time entries</span> <strong>{{ time_entry_count }}</strong></article>
+      <article class="panel"><span>Running timers</span> <strong>{{ running_timer_count }}</strong></article>
+    </section>
+{% endblock %}
